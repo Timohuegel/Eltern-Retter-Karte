@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dein Next Level – Finanzen & Karriere mit Timo Hügel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href=https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&family=Raleway:wght@500;600;700&display=swap rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #4a787d;
+      --accent: #f4be69;
+      --text: #111111;
+      --muted: #4b5563;
+      --bg-soft: #f9fbfb;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Arimo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e0f2fe 0, #fef3c7 45%, #f4f8f8 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #ffffff;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.8rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to right, #ffffff, #e0f2fe);
+    }
+
+    .topbar-left { display: flex; align-items: center; gap: 0.75rem; }
+
+    .topbar-portrait img {
+      height: 54px;
+      width: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+    }
+
+    .topbar-title {
+      font-family: "Raleway", system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .topbar-tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .topbar-right {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    header.hero {
+      padding: 2rem 1.4rem 2.2rem;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(circle at top left, #e0f2fe 0, #ffffff 35%, #fef3c7 100%);
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-text { flex: 1 1 260px; min-width: 0; }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-label span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: "Raleway", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin: 0 0 0.7rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-lead {
+      margin: 0 0 1rem;
+      color: var(--muted);
+      max-width: 34rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-lead strong { font-weight: 700; color: var(--primary); }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .btn-primary,
+    .btn-wa,
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #1f2933;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-gold {
+      background: var(--accent);
+      color: #1f2933;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-primary:hover,
+    .btn-wa:hover,
+    .btn-gold:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+
+    .hero-photo {
+      flex: 0 0 280px;
+      text-align: right;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .hero-photo::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f4be69 0, #ffffff 50%, #93c5fd 100%);
+      opacity: 0.6;
+      top: 10px;
+      z-index: 0;
+    }
+
+    .hero-photo img {
+      max-width: 320px;
+      height: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    main {
+      padding: 1.8rem 1.4rem 2.4rem;
+      flex: 1;
+      background: linear-gradient(to bottom, #ffffff 0, #f9fafb 100%);
+    }
+
+    section { margin-bottom: 2rem; }
+
+    h2 {
+      font-family: "Raleway", system-ui, sans-serif;
+      margin: 0 0 0.4rem;
+      font-size: 1.45rem;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .section-subtitle strong {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .card-title {
+      font-family: "Raleway", system-ui, sans-serif;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .card ul { margin: 0.2rem 0 0; padding-left: 1.1rem; }
+    .card li { margin-bottom: 0.18rem; }
+
+    .num { font-weight: 700; color: var(--primary); }
+
+    .bottom-cta {
+      margin-top: 1.6rem;
+      padding: 1.1rem 1.1rem 1.3rem;
+      border-radius: 18px;
+      background: linear-gradient(to right, #e0f2fe, #fef3c7);
+      border: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .bottom-cta p { margin: 0 0 0.8rem; color: var(--muted); }
+
+    footer {
+      padding: 1rem 1.4rem 1.3rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+      border-top: 1px solid var(--border);
+      background: #f9fafb;
+    }
+
+    @media (max-width: 768px) {
+      .topbar { padding-inline: 1rem; }
+      header.hero { padding: 1.6rem 1rem 1.8rem; }
+      main { padding: 1.6rem 1rem 2.2rem; }
+
+      .hero-inner { flex-direction: column-reverse; align-items: flex-start; }
+
+      .hero h1 { font-size: 1.6rem; }
+      .hero-lead { font-size: 0.9rem; }
+
+      .hero-photo { width: 100%; justify-content: center; align-items: center; }
+
+      .hero-photo::before { width: 180px; height: 180px; top: 10px; }
+
+      .hero-photo img { max-width: 280px; }
+
+      .cta-row { gap: 0.5rem; }
+
+      .btn-primary,
+      .btn-wa,
+      .btn-gold { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-portrait">
+        <img src="timo-halbkoerper.png" alt="Timo Hügel" />
+      </div>
+      <div>
+        <div class="topbar-title">Timo Hügel</div>
+        <div class="topbar-tagline">
+          Agentur für Deutsche Vermögensberatung<br />
+          Ziegelstraße 4a · 77656 Offenburg
+        </div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      Ganzheitliche Finanzberatung<br />
+      für Offenburg und die Ortenau
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-label">
+          <span class="dot"></span>
+          Dein Next Level – Finanzen & Karriere
+        </div>
+        <h1>Mehr Klarheit für Dein Geld. Mehr Perspektive für Deine Zukunft.</h1>
+        <p class="hero-lead">
+          Ich begleite Dich als Allfinanz-Berater in Offenburg –
+          egal, ob Du Deine eigenen Finanzen sortieren möchtest
+          oder eine echte Karrierechance suchst. Ziel:
+          <strong>mehr Sicherheit, mehr Freiheit und ein Job, der zu Dir passt.</strong>
+        </p>
+
+        <div class="cta-row">
+          <!-- Forms-Link von Timo einsetzen -->
+          <a href=https://forms.cloud.microsoft/e/DEIN_FORMS_LINK_TIMO
+             target="_blank"
+             class="btn-primary">
+            Kurze Anfrage – ich melde mich bei Dir
+          </a>
+
+          <a href=https://wa.me/4917663796605
+             target="_blank"
+             class="btn-wa">
+            Schreib mir kurz per WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="timo-ganzkoerper.png" alt="Timo Hügel" />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Leistungen -->
+    <section>
+      <h2>Wie ich Dich unterstützen kann</h2>
+      <div class="section-subtitle">
+        Du bekommst keine Standardlösung, sondern eine Begleitung, die Deine Lebenssituation, Deine Ziele
+        und Dein Tempo berücksichtigt.
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Moderne Geldanlagen</div>
+          <ul>
+            <li>Sparpläne, Aktienfonds und Edelmetalle.</li>
+            <li>Anlagen, die zu Deinem Risikoempfinden passen.</li>
+            <li>Aufbau von Vermögen mit klarer Struktur.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Eigentum und Finanzierung</div>
+          <ul>
+            <li>Begleitung bei Baufinanzierungen und Bausparkonzepten.</li>
+            <li>Struktur, damit Rate, Absicherung und Rücklagen zusammenpassen.</li>
+            <li>Unterstützung von der Idee bis zur Unterschrift.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Berufs-, Alters- & Gesundheitsvorsorge</div>
+          <ul>
+            <li>Rentenaufbau mit staatlicher Förderung und Steuervorteilen.</li>
+            <li>Berufsunfähigkeit, Krankentagegeld und mehr – passend zu Deinem Beruf.</li>
+            <li>Konzepte, die mit Dir mitwachsen.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weitere Themen -->
+    <section>
+      <h2>Weitere Themen, bei denen ich an Deiner Seite bin</h2>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Absicherung & Kredite</div>
+          <ul>
+            <li>Versicherungen rund um Familie, Haus und Auto.</li>
+            <li>Begleitung bei Privatkrediten und Umschuldungen.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Patientenverfügungen, Vollmachten, Testament</div>
+          <ul>
+            <li>Struktur, damit im Ernstfall klar ist, wer entscheiden darf.</li>
+            <li>Begleitung bei der Umsetzung mit passenden Partnern.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Firmenkundenberatung</div>
+          <ul>
+            <li>bAV, betriebliche Krankenversicherung und mehr.</li>
+            <li>Konzepte, mit denen Unternehmen <strong class="num">attraktiver für Mitarbeitende</strong> werden.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Karriere / Team -->
+    <section>
+      <h2>Dein nächster Karriereschritt – gemeinsam im Team</h2>
+      <div class="section-subtitle">
+        Ich baue mein Team in Offenburg weiter aus und suche Menschen, die
+        <strong>authentisch, menschlich und voller Energie</strong> sind.
+        Wenn Du Lust hast, Verantwortung zu übernehmen und Dich fachlich wie persönlich weiterzuentwickeln, lass uns sprechen.
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Was Dich erwartet</div>
+          <ul>
+            <li>Intensive Einarbeitung und persönliche Begleitung.</li>
+            <li>Perspektive auf eine verantwortungsvolle Führungsrolle.</li>
+            <li>Möglichkeiten, Deine Arbeitszeit flexibel zu gestalten.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Was Du mitbringen solltest</div>
+          <ul>
+            <li>Freude am Umgang mit Menschen.</li>
+            <li>Bereitschaft, Verantwortung zu übernehmen und zu wachsen.</li>
+            <li>Offenheit für Neues und Lust, Dich weiterzubilden.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Wie wir starten</div>
+          <ul>
+            <li>Wir sprechen über Deine aktuelle Situation und Deine Ziele.</li>
+            <li>Du bekommst einen klaren Fahrplan für Deine nächsten Schritte.</li>
+            <li>Wenn es für beide Seiten passt, legen wir gemeinsam los.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section>
+      <div class="bottom-cta">
+        <p>
+          Du möchtest Deine Finanzen sortieren, Deine Rente auf ein neues Level bringen
+          oder schauen, ob die Karriere im Finanzbereich zu Dir passt?
+        </p>
+        <a href=https://forms.cloud.microsoft/e/DEIN_FORMS_LINK_TIMO
+           target="_blank"
+           class="btn-gold">
+          Kurze Anfrage – ich melde mich bei Dir
+        </a>
+        <br /><br />
+        <a href=https://wa.me/4917663796605
+           target="_blank"
+           class="btn-wa">
+          Oder schreib mir direkt per WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Diese Seite ersetzt keine individuelle Rechts-, Steuer- oder Sozialversicherungsberatung.
+    Alle Angaben ohne Gewähr. Maßgeblich sind die gesetzlichen Regelungen und die Informationen der jeweiligen Anbieter.
+  </footer>
+</div>
+</body>
+</html>
